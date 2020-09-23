@@ -15,8 +15,13 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
 
-    console.log('auth interceptor called', this.authService.token)
-    request = request.clone({setHeaders: {['x-access-token']:  this.authService.token}});
+    const token = this.authService.token;
+
+    console.log('auth interceptor called', token)
+    if (token) {
+      request = request.clone({setHeaders: {['x-access-token']:  token}});
+    }
+    
     return next.handle(request);
   }
 }

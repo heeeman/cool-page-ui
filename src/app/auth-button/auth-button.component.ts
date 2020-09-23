@@ -57,9 +57,11 @@ export class AuthButtonComponent implements OnInit {
         user => {this.user = user; 
 
             const authRes = user.getAuthResponse();
+            const profile = user.getBasicProfile();
+
             console.log('logged in with : ', user);
-            console.log('logged name : ', user.tt.Ad);
-            console.log('logged mail : ', user.tt.bu);
+            console.log('logged name : ', profile.Ad);
+            console.log('logged mail : ', profile.$t);
             console.log('id token : ', authRes.id_token);
 
             // send id token to backend
