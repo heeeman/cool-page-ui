@@ -66,8 +66,9 @@ export class AuthButtonComponent implements OnInit {
 
             const header = new HttpHeaders({'Content-Type': 'text/plain'});
 
-            this.http.post<any>('http://localhost:5000/login/token/', authRes.id_token, {headers: header}).subscribe(res => {
-          
+            // this.http.post<any>('http://localhost:5000/login/token/', authRes.id_token, {headers: header}).subscribe(res => {
+              this.http.post<any>('https://cool-page.herokuapp.com/login/token/', authRes.id_token, {headers: header}).subscribe(res => {
+
               console.log(res);
               this.authService.token = res.token;
           },

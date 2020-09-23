@@ -29,6 +29,7 @@ export class AuthService {
 
   private saveToken(token: string): void {
     // todo Umbau auf Session Cookie, dabei aber CSRF beachten. Möglicherweise mit einem synchronizer token
+    // https://auth0.com/docs/tokens/token-storage
     window.sessionStorage.setItem(this.TOKEN_STORAGE_ID, token);
   }
 
