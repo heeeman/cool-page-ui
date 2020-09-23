@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-backend',
@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class BackendComponent implements OnInit {
 
-  serverResponse: string = 'nothing received';
+  serverResponse: any = 'nothing received';
 
   constructor(private http: HttpClient) { }
 
@@ -16,7 +16,14 @@ export class BackendComponent implements OnInit {
   }
 
   callBackend():void {
-    this.http.get('https://cool-page.herokuapp.com:443/',{ responseType: 'text' }).subscribe(res => {
+    const header = new HttpHeaders({
+      'responseType' : 'text',
+      'Content-Type': 'text/plain',
+  });
+
+
+    this.http.get('https://cool-page.herokuapp.com:443/',{ headers: header }).subscribe(res => {
+      // this.http.get('http://localhost:5000',{ headers: header }).subscribe(res => {
         this.serverResponse = res;
         console.log(res);
     },
