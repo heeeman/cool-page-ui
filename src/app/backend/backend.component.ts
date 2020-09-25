@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-backend',
@@ -21,8 +22,7 @@ export class BackendComponent implements OnInit {
       'Content-Type': 'text/plain',
   });
 
-
-    this.http.get('https://cool-page.herokuapp.com:443/',{ headers: header }).subscribe(res => {
+    this.http.get(environment.data_server_url + '/',{ headers: header }).subscribe(res => {
       // this.http.get('http://localhost:5000',{ headers: header }).subscribe(res => {
         this.serverResponse = res;
         console.log(res);
