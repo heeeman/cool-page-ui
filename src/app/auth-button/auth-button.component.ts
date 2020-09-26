@@ -69,6 +69,8 @@ export class AuthButtonComponent implements OnInit {
 
             const header = new HttpHeaders({'Content-Type': 'text/plain'});
 
+            console.log(' my server is : ' + environment.data_server_url);
+
             // this.http.post<any>('http://localhost:5000/login/token/', authRes.id_token, {headers: header}).subscribe(res => {
               this.http.post<any>(environment.data_server_url + '/login/token/', authRes.id_token, {headers: header}).subscribe(res => {
 
