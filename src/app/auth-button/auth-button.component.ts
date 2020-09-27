@@ -71,20 +71,16 @@ export class AuthButtonComponent implements OnInit {
 
             console.log(' my server is : ' + environment.data_server_url);
 
-            // this.http.post<any>('http://localhost:5000/login/token/', authRes.id_token, {headers: header}).subscribe(res => {
-              this.http.post<any>(environment.data_server_url + '/login/token/', authRes.id_token, {headers: header}).subscribe(res => {
+            this.http.post<any>(environment.data_server_url + '/login/token', authRes.id_token, {headers: header}).subscribe(res => {
 
-              console.log(res);
-              this.authService.token = res.token;
+            console.log(res);
+            this.authService.token = res.token;
           },
           err => {
           console.log(err);
           })
 
-
-
-
-          },
+        },
         error => this.error = error);
     });
   }

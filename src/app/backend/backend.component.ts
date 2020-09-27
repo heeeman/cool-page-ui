@@ -9,22 +9,23 @@ import { environment } from 'src/environments/environment';
 })
 export class BackendComponent implements OnInit {
 
-  serverResponse: any = 'nothing received';
+  serverResponse: string = 'nothing received';
 
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
   }
 
-  callBackend():void {
+  callBackend(url: String):void {
     const header = new HttpHeaders({
       'responseType' : 'text',
       'Content-Type': 'text/plain',
   });
 
-    this.http.get(environment.data_server_url + '/',{ headers: header }).subscribe(res => {
-      // this.http.get('http://localhost:5000',{ headers: header }).subscribe(res => {
-        this.serverResponse = res;
+  const call = environment.data_server_url + '/' + url;
+  console.log('url backend : ' + call);
+    this.http.get(call, { headers: header }).subscribe(res => {
+        this.serverResponse = 'test ' + res['text'];
         console.log(res);
     },
     err => {

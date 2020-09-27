@@ -1,4 +1,7 @@
 <p>backend-component works!</p>
 
-<button (click)="callBackend()">Call Backend</button>
-<div class="response">{{serverResponse.text}}</div>
+<button (click)="callBackend('')">Call Backend</button>
+<button (click)="callBackend('myRoute2')">Call Backend route 2</button>
+<button (click)="callBackend('myRoute3/')">Call Backend route 3</button>
+
+<div class="response">{{serverResponse}}</div>
