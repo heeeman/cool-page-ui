@@ -73,12 +73,12 @@ export class AuthButtonComponent implements OnInit {
 
             this.http.post<any>(environment.data_server_url + '/login/token', authRes.id_token, {headers: header}).subscribe(res => {
 
-            console.log(res);
-            this.authService.token = res.token;
-          },
-          err => {
-          console.log(err);
-          })
+              console.log(res);
+              this.authService.token = res.token;
+            },
+            err => {
+            console.log(err);
+            });
 
         },
         error => this.error = error);
