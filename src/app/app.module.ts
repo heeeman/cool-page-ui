@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BackendComponent} from './backend/backend.component';
 import { AuthButtonComponent } from './auth-button/auth-button.component';
 import { AuthInterceptor } from './auth-button/auth.interceptor';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { AuthInterceptor } from './auth-button/auth.interceptor';
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]

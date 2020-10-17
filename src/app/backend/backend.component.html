@@ -5,3 +5,17 @@
 <button (click)="callBackend('myRoute3/')">Call Backend route 3</button>
 
 <div class="response">{{serverResponse}}</div>
+
+<br/>
+<br/>
+<br/>
+<textarea [(ngModel)]="commentInput" rows="5"></textarea>
+<button (click)="addComment()">AddComment</button>
+
+
+<div *ngFor="let comment of comments">
+  {{comment}}
+  <hr/>
+</div>
+
+

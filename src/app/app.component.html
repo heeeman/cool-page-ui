@@ -2,6 +2,6 @@
 <br/>
 <br/>
 <br/>
-<a routerLink="/backend">service call</a>
+<a *ngIf="authService.token" routerLink="/backend">service call</a>
 
 <router-outlet></router-outlet>
